@@ -1,4 +1,5 @@
-﻿using DevQuestions.Application.Questions;
+﻿using DevQuestions.Application.FulltextSearch;
+using DevQuestions.Application.Questions;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ public static class DependencyInjection
     {
         services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
         services.AddScoped<IQuestionsService, QuestionsService>();
+        services.AddScoped<ISearchProvider, SearchProvider>();
         return services;
     }
 }

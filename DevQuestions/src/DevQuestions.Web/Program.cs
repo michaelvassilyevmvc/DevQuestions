@@ -1,8 +1,15 @@
+using DevQuestions.Infrastructure.Postgresql;
+using DevQuestions.Web;
+using DevQuestions.Web.Middlewares;
+using DevQuestions.Web.Seeders;
+
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddProgramDependencies();
 
 var app = builder.Build();
+app.UseExceptionMiddleware();
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -14,5 +21,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
