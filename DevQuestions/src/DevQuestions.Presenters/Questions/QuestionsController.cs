@@ -1,4 +1,7 @@
+using DevQuestions.Application.Abstractions;
 using DevQuestions.Application.Questions;
+using DevQuestions.Application.Questions.Features.AddAnswer;
+using DevQuestions.Application.Questions.Features.CreateQuestion;
 using DevQuestions.Contracts.Questions;
 using DevQuestions.Presenters.ResponseExtensions;
 using Microsoft.AspNetCore.Mvc;
@@ -9,19 +12,14 @@ namespace DevQuestions.Presenters.Questions;
 [Route("[controller]")]
 public class QuestionsController : ControllerBase
 {
-    private readonly IQuestionsService _questionsService;
-
-    public QuestionsController(IQuestionsService questionsService)
-    {
-        _questionsService = questionsService;
-    }
-
     [HttpPost]
     public async Task<IActionResult> Create(
-        [FromBody] CreateQuestionDto questionDto,
+        [FromBody] CreateQuestionDto request,
+        [FromServices] ICommandHandler<Guid, CreateQuestionCommand> handler,
         CancellationToken cancellationToken)
     {
-        var result = await _questionsService.Create(questionDto, cancellationToken);
+        var command = new CreateQuestionCommand(request);
+        var result = await handler.HandleAsync(command, cancellationToken);
         return result.IsFailure ? result.Error.ToResponse() : Ok(result.Value);
     }
 
@@ -70,9 +68,13 @@ public class QuestionsController : ControllerBase
     [HttpPost("{questionId:guid}/answers")]
     public async Task<IActionResult> AddAnswer(
         [FromRoute] Guid questionId,
+        [FromServices] ICommandHandler<Guid, AddAnswerCommand> handler,
         [FromBody] AddAnswerDto request,
         CancellationToken cancellationToken)
     {
-        return Ok("Answer added");
+        var command = new AddAnswerCommand(questionId, request);
+        var result = await handler.HandleAsync(command, cancellationToken);
+
+        return result.IsFailure ? result.Error.ToResponse() : Ok(result.Value);
     }
 }
