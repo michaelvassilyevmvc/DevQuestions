@@ -1,9 +1,11 @@
-﻿using DevQuestions.Domain.Questions;
+﻿using CSharpFunctionalExtensions;
+using DevQuestions.Domain.Questions;
+using Shared;
 
 namespace DevQuestions.Application.FulltextSearch;
 
 public interface ISearchProvider
 {
     Task<List<Guid>> SearchAsync(string query);
-    Task IndexQuestionAsync(Question question);
+    Task<UnitResult<Failure>> IndexQuestionAsync(Question question);
 }

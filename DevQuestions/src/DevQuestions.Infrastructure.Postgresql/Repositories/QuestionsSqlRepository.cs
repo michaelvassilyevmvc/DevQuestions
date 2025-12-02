@@ -1,9 +1,11 @@
-﻿using Dapper;
+﻿using CSharpFunctionalExtensions;
+using Dapper;
 using DevQuestions.Application.Database;
 using DevQuestions.Application.Questions;
 using DevQuestions.Domain.Questions;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
+using Shared;
 
 namespace DevQuestions.Infrastructure.Postgresql.Repositories;
 
@@ -48,6 +50,8 @@ public class QuestionsSqlRepository : IQuestionsRepository
         throw new NotImplementedException();
     }
 
+    Task<Result<Question?, Failure>> IQuestionsRepository.GetByIdAsync(Guid questionId, CancellationToken cancellationToken) => throw new NotImplementedException();
+
     public Task<Question?> GetByIdAsync(Guid questionId, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
@@ -57,4 +61,6 @@ public class QuestionsSqlRepository : IQuestionsRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<Guid> AddAnswerAsync(Answer answer, CancellationToken cancellationToken) => throw new NotImplementedException();
 }
