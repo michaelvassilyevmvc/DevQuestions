@@ -7,9 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Questions\" />
-      <Folder Include="Tags\" />
+      <ProjectReference Include="..\..\Core\Shared\Shared.csproj" />
+      <ProjectReference Include="..\Tags.Contracts\Tags.Contracts.csproj" />
+      <ProjectReference Include="..\Tags\Tags.csproj" />
     </ItemGroup>
-
 
 </Project>

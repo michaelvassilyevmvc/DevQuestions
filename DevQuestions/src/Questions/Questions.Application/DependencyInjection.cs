@@ -1,9 +1,8 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Abstractions;
-using Shared.FulltextSearch;
 
-namespace DevQuestions.Application;
+namespace Questions.Application;
 
 public static class DependencyInjection
 {
@@ -12,7 +11,7 @@ public static class DependencyInjection
         var assembly = typeof(DependencyInjection).Assembly;
 
         services.AddValidatorsFromAssembly(assembly);
-        services.AddScoped<ISearchProvider, SearchProvider>();
+        // services.AddScoped<ISearchProvider, SearchProvider>();
 
         // регистрация всех handlers в DI через Scrutor
         services.Scan(scan => scan.FromAssemblies([assembly])

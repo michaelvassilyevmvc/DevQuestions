@@ -7,19 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Shared\Shared.csproj" />
       <ProjectReference Include="..\DevQuestions.Application\DevQuestions.Application.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Configurations\" />
-      <Folder Include="Questions\" />
-      <Folder Include="Tags\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Dapper" Version="2.1.66" />
-      <PackageReference Include="Npgsql" Version="9.0.2" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
+      <PackageReference Include="AWSSDK.S3" Version="4.0.13.1" />
     </ItemGroup>
 
 </Project>

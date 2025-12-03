@@ -1,21 +1,17 @@
-﻿using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Shared.Abstractions;
-using Shared.FulltextSearch;
+using Tags.Database;
 
-namespace DevQuestions.Application;
+namespace Tags;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static IServiceCollection AddTagsModule(this IServiceCollection services)
     {
-        var assembly = typeof(DependencyInjection).Assembly;
-
-        services.AddValidatorsFromAssembly(assembly);
-        services.AddScoped<ISearchProvider, SearchProvider>();
-
+        services.AddDbContext<TagsDbContext>();
+        
         // регистрация всех handlers в DI через Scrutor
-        services.Scan(scan => scan.FromAssemblies([assembly])
+        services.Scan(scan => scan.FromAssemblies([TagsAssembly.Assembly])
             .AddClasses(classes => classes
                 .AssignableToAny(typeof(ICommandHandler<,>), typeof(ICommandHandler<>)))
             .AsImplementedInterfaces()
@@ -23,12 +19,13 @@ public static class DependencyInjection
         );
         
         // регистрация всех query в DI через Scrutor
-        services.Scan(scan => scan.FromAssemblies([assembly])
+        services.Scan(scan => scan.FromAssemblies([TagsAssembly.Assembly])
             .AddClasses(classes => classes
                 .AssignableToAny(typeof(IQueryHandler<,>)))
             .AsImplementedInterfaces()
             .WithScopedLifetime()
         );
+        
         return services;
-    }
+    } 
 }

@@ -21,6 +21,8 @@
 
     <ItemGroup>
       <Folder Include="Comments\" />
+      <Folder Include="Questions\" />
+      <Folder Include="Tags\" />
     </ItemGroup>
 
 </Project>
