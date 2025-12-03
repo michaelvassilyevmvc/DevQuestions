@@ -14,10 +14,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Core\Framework\Framework.csproj" />
       <ProjectReference Include="..\Core\Shared\Shared.csproj" />
-      <ProjectReference Include="..\DevQuestions.Application\DevQuestions.Application.csproj" />
-      <ProjectReference Include="..\DevQuestions.Domain\DevQuestions.Domain.csproj" />
-      <ProjectReference Include="..\DevQuestions.Infrastructure.Postgresql\DevQuestions.Infrastructure.Postgresql.csproj" />
-      <ProjectReference Include="..\DevQuestions.Presenters\DevQuestions.Presenters.csproj" />
       <ProjectReference Include="..\Questions\Questions.Presenters\Questions.Presenters.csproj" />
       <ProjectReference Include="..\Tags\Tags.Presenters\Tags.Presenters.csproj" />
       <ProjectReference Include="..\Tags\Tags\Tags.csproj" />

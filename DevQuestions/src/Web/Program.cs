@@ -1,9 +1,7 @@
-using DevQuestions.Infrastructure.Postgresql;
 using Framework;
 using Tags;
 using Web;
 using Web.Middlewares;
-using Web.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 

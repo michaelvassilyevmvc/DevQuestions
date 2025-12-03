@@ -1,6 +1,4 @@
-﻿using DevQuestions.Application;
-using DevQuestions.Infrastructure.Postgresql;
-using Questions.Presenters;
+﻿using Questions.Presenters;
 using Tags;
 
 namespace Web;
