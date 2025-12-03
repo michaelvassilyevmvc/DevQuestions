@@ -6,10 +6,7 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\DevQuestions.Application\DevQuestions.Application.csproj" />
-    </ItemGroup>
-
+   
     <ItemGroup>
       <Folder Include="Configurations\" />
       <Folder Include="Questions\" />
