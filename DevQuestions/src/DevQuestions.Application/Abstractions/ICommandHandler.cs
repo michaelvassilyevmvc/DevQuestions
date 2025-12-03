@@ -16,3 +16,4 @@ public interface ICommandHandler<in TCommand>
 {
     Task<UnitResult<Failure>> HandleAsync(TCommand command, CancellationToken cancellationToken);
 }
+

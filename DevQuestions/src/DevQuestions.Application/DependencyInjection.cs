@@ -21,6 +21,14 @@ public static class DependencyInjection
             .AsImplementedInterfaces()
             .WithScopedLifetime()
         );
+        
+        // регистрация всех query в DI через Scrutor
+        services.Scan(scan => scan.FromAssemblies([assembly])
+            .AddClasses(classes => classes
+                .AssignableToAny(typeof(IQueryHandler<,>)))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime()
+        );
         return services;
     }
 }

@@ -2,12 +2,11 @@
 using Dapper;
 using DevQuestions.Application.Database;
 using DevQuestions.Application.Questions;
+using DevQuestions.Application.Questions.Features.GetQuestionsWithFiltersQuery;
 using DevQuestions.Domain.Questions;
-using Microsoft.Extensions.Configuration;
-using Npgsql;
 using Shared;
 
-namespace DevQuestions.Infrastructure.Postgresql.Repositories;
+namespace DevQuestions.Infrastructure.Postgresql.Questions;
 
 public class QuestionsSqlRepository : IQuestionsRepository
 {
@@ -61,6 +60,8 @@ public class QuestionsSqlRepository : IQuestionsRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<(IReadOnlyList<Question> Questions, long Count)> GetQuestionsWithFiltersAsync(GetQuestionsWithFiltersQuery query, CancellationToken cancellationToken) => throw new NotImplementedException();
 
     public Task<Guid> AddAnswerAsync(Answer answer, CancellationToken cancellationToken) => throw new NotImplementedException();
 }

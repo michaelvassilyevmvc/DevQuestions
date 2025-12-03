@@ -2,22 +2,22 @@
 using DevQuestions.Application.Abstractions;
 using DevQuestions.Application.Extensions;
 using DevQuestions.Application.Questions.Fails;
-using DevQuestions.Contracts.Questions;
+using DevQuestions.Contracts.Questions.Dtos;
 using DevQuestions.Domain.Questions;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
 using Shared;
 
-namespace DevQuestions.Application.Questions.Features.CreateQuestion;
+namespace DevQuestions.Application.Questions.Features.CreateQuestionCommand;
 
-public class CreateQuestionHandler: ICommandHandler<Guid, CreateQuestionCommand>
+public class CreateQuestionCommandHandler: ICommandHandler<Guid, CreateQuestionCommand>
 {
-    private readonly ILogger<CreateQuestionHandler> _logger;
+    private readonly ILogger<CreateQuestionCommandHandler> _logger;
     private readonly IQuestionsRepository _questionsRepository;
     private readonly IValidator<CreateQuestionDto> _validator;
 
-    public CreateQuestionHandler(
-        ILogger<CreateQuestionHandler> logger,
+    public CreateQuestionCommandHandler(
+        ILogger<CreateQuestionCommandHandler> logger,
         IQuestionsRepository questionsRepository,
         IValidator<CreateQuestionDto> validator)
     {

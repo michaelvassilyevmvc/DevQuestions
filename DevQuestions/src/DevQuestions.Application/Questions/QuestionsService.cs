@@ -6,6 +6,7 @@ using DevQuestions.Application.FulltextSearch;
 using DevQuestions.Application.Questions.Fails;
 using DevQuestions.Application.Questions.Fails.Exceptions;
 using DevQuestions.Contracts.Questions;
+using DevQuestions.Contracts.Questions.Dtos;
 using DevQuestions.Domain.Questions;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
